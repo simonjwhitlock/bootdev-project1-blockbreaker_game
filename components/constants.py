@@ -1,0 +1,5 @@
+# Set pygame screen size
+SCREEN_WIDTH = 450 
+SCREEN_HEIGHT = 650
+
+GAME_PADDIGN = 25
