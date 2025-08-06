@@ -1,5 +1,6 @@
 import pygame
 from components.constants import *
+from components.player import Player
 
 def main() :
     pygame.init()
@@ -11,7 +12,9 @@ def main() :
     blocks = pygame.sprite.Group()
     balls = pygame.sprite.Group()
     
-    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT - GAME_PADDIGN)
+    Player.containers = (updatable, drawable)
+    
+    player = Player((SCREEN_WIDTH/2) - (PLAYER_WIDTH/2), SCREEN_HEIGHT - GAME_PADDING - PLAYER_HEIGHT)
     
     dt = 0
     
@@ -28,7 +31,6 @@ def main() :
             sprite.draw(screen)
         
         pygame.display.flip()
-        
         
         dt = clock.tick(60) / 1000
     

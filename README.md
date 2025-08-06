@@ -15,3 +15,6 @@ If the ball hits the top or sides of the screen it will rebound in the same way 
 
 each block will take a number of hits to break, each layer will take more hits than the previous one. the colour of the blocks will reflect the remaining number of hits to break it. 
 
+
+
+# Structure of the 
