@@ -14,7 +14,7 @@ def main() :
     
     Player.containers = (updatable, drawable)
     
-    player = Player((SCREEN_WIDTH/2) - (PLAYER_WIDTH/2), SCREEN_HEIGHT - GAME_PADDING - PLAYER_HEIGHT)
+    player = Player(SCREEN_HEIGHT - GAME_PADDING - PLAYER_HEIGHT, (SCREEN_WIDTH/2) - (PLAYER_WIDTH/2))
     
     dt = 0
     

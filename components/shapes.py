@@ -35,7 +35,10 @@ class RectangleShape(pygame.sprite.Sprite):
             super().__init__()
             
         self.velocity = pygame.Vector2(0, 0)
-        self.rect = pygame.Rect(x, y, width, height)
+        self.posx = x
+        self.posy = y
+        self.width = width
+        self.height = height
         
     def draw(self, screen):
         pass
