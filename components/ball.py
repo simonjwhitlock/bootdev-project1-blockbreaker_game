@@ -1,14 +1,16 @@
 import pygame
 from components.constants import *
-from components.shapes import CircleShape
 
-class Ball(CircleShape):
+class Ball(pygame.sprite.Sprite):
     def __init__(self, x, y):
-        super().__init__(x, y, BALL_RADIUS)
-
-    def draw(self, screen):
-        pygame.draw.circle(screen, "white", self.position, self.radius, 2)
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load("assets/ball.png").convert_alpha()
+        self.rect = self.image.get_rect()
+        self.rect.center = (x, y)
+        self.mask = pygame.mask.from_surface(self.image)
+        self.velocity = pygame.Vector2(0, BALL_START_VELOCITY)
+        
         
     def update(self, dt):
-        self.position += self.velocity * dt
+        self.rect.center += self.velocity * dt
         

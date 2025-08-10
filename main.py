@@ -13,11 +13,12 @@ def main() :
     blocks = pygame.sprite.Group()
     balls = pygame.sprite.Group()
     
-    Player.containers = (updatable, drawable)
-    Ball.containers = (updatable, drawable, balls)
+    player = Player(SCREEN_WIDTH /2 , SCREEN_HEIGHT - GAME_PADDING)
+    ball1 = Ball(SCREEN_WIDTH /2, SCREEN_HEIGHT / 2)
     
-    player = Player(SCREEN_HEIGHT - GAME_PADDING - PLAYER_HEIGHT, (SCREEN_WIDTH/2) - (PLAYER_WIDTH/2))
-    ball = Ball(SCREEN_WIDTH /2, SCREEN_HEIGHT / 2)
+    updatable.add(player,ball1)
+    drawable.add(player,ball1)
+    balls.add(ball1)
     
     dt = 0
     
@@ -28,10 +29,12 @@ def main() :
         
         updatable.update(dt)
         
+        if player.collision(balls):
+            print("ball colliding with player")
+        
         screen.fill("black")
         
-        for sprite in drawable:
-            sprite.draw(screen)
+        drawable.draw(screen)
         
         pygame.display.flip()
         
