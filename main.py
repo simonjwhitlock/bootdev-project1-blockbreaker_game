@@ -29,6 +29,13 @@ def main() :
         
         updatable.update(dt)
         
+        
+        collisions = pygame.sprite.spritecollide(player,balls,False,pygame.sprite.collide_mask)
+        if len(collisions) > 0:
+            for ball in collisions:
+                print(ball)
+                ball.reflect((0, -1))
+        
         if player.collision(balls):
             print("ball colliding with player")
         

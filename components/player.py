@@ -31,7 +31,6 @@ class Player(pygame.sprite.Sprite):
     def collision(self, other):
         if pygame.sprite.spritecollide(self, other, False):
             if pygame.sprite.spritecollide(self, other, False, pygame.sprite.collide_mask):
-                print("collide")
                 return True
         return False
         
