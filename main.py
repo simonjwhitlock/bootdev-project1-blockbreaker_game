@@ -13,8 +13,8 @@ def main() :
     blocks = pygame.sprite.Group()
     balls = pygame.sprite.Group()
     
-    player = Player(SCREEN_WIDTH /2 , SCREEN_HEIGHT - GAME_PADDING)
-    ball1 = Ball(SCREEN_WIDTH /2, SCREEN_HEIGHT / 2)
+    player = Player(SCREEN_WIDTH /2, SCREEN_HEIGHT - GAME_PADDING)
+    ball1 = Ball(SCREEN_WIDTH /2, 20)
     
     updatable.add(player,ball1)
     drawable.add(player,ball1)
