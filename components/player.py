@@ -18,22 +18,17 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         
         if keys[pygame.K_RIGHT]:
-            print('right')
             self.move(dt)
         if keys[pygame.K_LEFT]:
-            print('left')
             self.move(-dt)
         
         self.x += self.velocity
-        print(self.x)
         self.rect.center = (self.x, self.y)
             
     def move(self, dt):
         if (self.rect.left <= 0 and dt < 0):
-            print("left edge")
             self.velocity = 0
         elif (self.rect.right >= SCREEN_WIDTH and dt > 0):
-            print("right edge")
             self.velocity = 0
         else:
             self.velocity = PLAYER_VELOCITY * dt

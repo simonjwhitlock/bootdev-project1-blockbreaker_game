@@ -34,7 +34,8 @@ def main() :
         if len(collisions) > 0:
             for ball in collisions:
                 print(ball)
-                ball.reflect((0, -1))
+                print(player.velocity)
+                ball.reflect((player.velocity, -1))
         
         if player.collision(balls):
             print("ball colliding with player")
