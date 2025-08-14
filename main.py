@@ -1,7 +1,8 @@
 import pygame
 from components.constants import *
 from components.player import *
-from components. ball import *
+from components.ball import *
+from components.blocks import *
 
 def main() :
     pygame.init()
@@ -13,12 +14,19 @@ def main() :
     blocks = pygame.sprite.Group()
     balls = pygame.sprite.Group()
     
-    player = Player(SCREEN_WIDTH /2, SCREEN_HEIGHT - GAME_PADDING)
-    ball1 = Ball(SCREEN_WIDTH /2, 20)
+    Player.containers = (updatable,drawable)
+    Ball.containers = (updatable,drawable,balls)
+    Block.containers = (updatable,drawable,blocks)
     
-    updatable.add(player,ball1)
-    drawable.add(player,ball1)
-    balls.add(ball1)
+    player = Player(SCREEN_WIDTH /2, SCREEN_HEIGHT - GAME_PADDING)
+    ball1 = Ball(SCREEN_WIDTH /2, 400)
+    
+    block1 = Block(SCREEN_WIDTH /2, 200)
+    
+    #updatable.add(player,ball1,block1)
+    #drawable.add(player,ball1,block1)
+    #balls.add(ball1)
+    #blocks.add
     
     dt = 0
     
@@ -29,16 +37,21 @@ def main() :
         
         updatable.update(dt)
         
-        
-        collisions = pygame.sprite.spritecollide(player,balls,False,pygame.sprite.collide_mask)
-        if len(collisions) > 0:
-            for ball in collisions:
+        player_collisions = pygame.sprite.spritecollide(player,balls,False,pygame.sprite.collide_mask)
+        if len(player_collisions) > 0:
+            for ball in player_collisions:
                 print(ball)
                 print(player.velocity)
                 ball.reflect((player.velocity, -1))
+                
+        for block in blocks:
+            block_collisions = pygame.sprite.spritecollide(block,balls,False,pygame.sprite.collide_mask)
+            if len(block_collisions) > 0:
+                for ball in block_collisions:
+                    print(ball)
+                    ball.reflect((0, -1))
+                    
         
-        if player.collision(balls):
-            print("ball colliding with player")
         
         screen.fill("black")
         

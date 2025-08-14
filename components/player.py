@@ -3,6 +3,11 @@ from components.constants import *
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
+        if hasattr(self, "containers"):
+            super().__init__(self.containers)
+        else:
+            super().__init__()
+        
         pygame.sprite.Sprite.__init__(self)
         self.x = x
         self.y = y

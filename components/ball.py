@@ -3,6 +3,11 @@ from components.constants import *
 
 class Ball(pygame.sprite.Sprite):
     def __init__(self, x, y):
+        if hasattr(self, "containers"):
+            super().__init__(self.containers)
+        else:
+            super().__init__()
+        
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("assets/ball.png").convert_alpha()
         self.rect = self.image.get_rect()
