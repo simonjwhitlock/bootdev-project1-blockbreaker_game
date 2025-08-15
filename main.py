@@ -23,6 +23,8 @@ def main() :
     
     block1 = Block(SCREEN_WIDTH /2, 200)
     
+    row1 = BlockRow(150,4)
+    
     #updatable.add(player,ball1,block1)
     #drawable.add(player,ball1,block1)
     #balls.add(ball1)
@@ -48,9 +50,10 @@ def main() :
             block_collisions = pygame.sprite.spritecollide(block,balls,False,pygame.sprite.collide_mask)
             if len(block_collisions) > 0:
                 for ball in block_collisions:
-                    print(ball)
                     ball.reflect((0, -1))
-                    
+                    block.health = block.health - 1
+                    if (block.health <= 0):
+                        block.kill()
         
         
         screen.fill("black")
