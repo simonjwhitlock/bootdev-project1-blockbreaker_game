@@ -21,9 +21,7 @@ def main() :
     player = Player(SCREEN_WIDTH /2, SCREEN_HEIGHT - GAME_PADDING)
     ball1 = Ball(SCREEN_WIDTH /2, 400)
     
-    block1 = Block(SCREEN_WIDTH /2, 200)
-    
-    row1 = BlockRow(150,4)
+    row1 = BlockArray(150, 4, 20)
     
     #updatable.add(player,ball1,block1)
     #drawable.add(player,ball1,block1)
@@ -52,6 +50,7 @@ def main() :
                 for ball in block_collisions:
                     ball.reflect((0, -1))
                     block.health = block.health - 1
+                    print('block collide')
                     if (block.health <= 0):
                         block.kill()
         
